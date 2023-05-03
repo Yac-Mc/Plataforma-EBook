@@ -1,2 +1,1 @@
-# PlataformaEmpleo
-Proyecto de plataforma de empleo (Ej: Workana)
+# Plataforma E-Book

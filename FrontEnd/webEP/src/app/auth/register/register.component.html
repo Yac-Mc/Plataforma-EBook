@@ -1,0 +1,123 @@
+<!-- ============================================================== -->
+<!-- Main wrapper - style you can find in pages.scss -->
+<!-- ============================================================== -->
+<section id="wrapper" class="login-register login-sidebar" style="background-image:url(../assets/images/background/login-register.jpg);">
+    <div class="login-box card">
+        <div class="card-body">
+            <form class="form-horizontal form-material" 
+                id="loginform" 
+                autocomplete="off"
+                [formGroup]="registerForm"
+                (ngSubmit)="createUser()">
+                <span href="javascript:void(0)" class="text-center db"><img src="../assets/images/logo-icon.png" alt="Home" />
+                    <br/><small>Plataforma E-Book</small>
+                </span>
+                <h3 class="box-title m-t-20 m-b-5">Regístrate ahora</h3><small>Crea tu cuenta y disfruta</small>
+                <div class="form-group m-t-5 m-b-5 row">
+                    <div class="col-xs-1 text-danger" *ngIf="formSubmitted && invalidField('name')">
+                        <small>*</small>
+                    </div>
+                    <div [ngClass]="formSubmitted && invalidField('name') ? 'col-md-11' : 'col-md-12'">
+                        <input class="form-control" 
+                            type="text" 
+                            placeholder="Nombre"
+                            formControlName="name">
+                    </div>
+                </div>
+                <div class="form-group m-t-5 m-b-5 row">
+                    <div class="col-xs-1 text-danger" *ngIf=" formSubmitted && invalidField('surnames')">
+                        <small>*</small>
+                    </div>
+                    <div [ngClass]="formSubmitted && invalidField('surnames') ? 'col-md-11' : 'col-md-12'">
+                        <input class="form-control" 
+                            type="text" 
+                            placeholder="Apellido"
+                            formControlName="surnames">
+                    </div>
+                </div>
+                <div class="form-group m-t-5 m-b-5 row">
+                    <div class="col-xs-1 text-danger" *ngIf="formSubmitted && invalidField('userName')">
+                        <small>*</small>
+                    </div>
+                    <div [ngClass]="formSubmitted && invalidField('userName') ? 'col-md-11' : 'col-md-12'">
+                        <input class="form-control" 
+                            type="text" 
+                            placeholder="Usuario"
+                            formControlName="userName">
+                    </div>
+                </div>
+                <div class="form-group m-t-5 m-b-5 row">
+                    <div class="col-xs-1 text-danger" *ngIf="formSubmitted && invalidField('email')">
+                        <small>*</small>
+                    </div>
+                    <div [ngClass]="formSubmitted && invalidField('email') ? 'col-md-11' : 'col-md-12'">
+                        <input class="form-control" 
+                            type="text"
+                            placeholder="Correo"
+                            formControlName="email">
+                    </div>
+                </div>
+                <div class="form-group m-t-5 m-b-5 row">
+                    <div class="col-xs-1 text-danger" *ngIf="formSubmitted && invalidField('typeUser')">
+                        <small>*</small>
+                    </div>
+                    <div [ngClass]="formSubmitted && invalidField('typeUser') ? 'col-md-11' : 'col-md-12'">
+                        <input class="form-control" 
+                            [attr.disabled]="true"
+                            type="text"
+                            placeholder="Tipo de usuario"
+                            formControlName="typeUser">
+                    </div>
+                </div>
+                <div class="form-group m-t-5 m-b-5 row">
+                    <div class="col-xs-1 text-danger" *ngIf="formSubmitted && passwordsNotEquals()">
+                        <small>*</small>
+                    </div>
+                    <div [ngClass]="formSubmitted && passwordsNotEquals() ? 'col-md-11' : 'col-md-12'">
+                        <input class="form-control" 
+                            type="password"
+                            placeholder="Password"
+                            formControlName="password">
+                    </div>
+                </div>
+                <div class="form-group m-t-5 m-b-5 row">
+                    <div class="col-xs-1 text-danger" *ngIf="formSubmitted && passwordsNotEquals()">
+                        <small>*</small>
+                    </div>
+                    <div [ngClass]="formSubmitted && passwordsNotEquals() ? 'col-md-11' : 'col-md-12'">
+                        <input class="form-control" 
+                            type="password" 
+                            placeholder="Confirmar Password"
+                            formControlName="password2">
+                    </div>
+                </div>
+                <div class="form-group row m-b-5">
+                    <div class="col-xs-1 text-danger" *ngIf="formSubmitted && invalidField('terms')">
+                        <small>*</small>
+                    </div>
+                    <div [ngClass]="formSubmitted && invalidField('terms') ? 'col-md-11' : 'col-md-12'">
+                        <div class="checkbox checkbox-primary p-t-0">
+                            <input id="checkbox-signup" 
+                                type="checkbox"
+                                formControlName="terms">
+                            <label for="checkbox-signup"> Estoy de acuerdo con todo</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group text-center m-t-5 m-b-5">
+                    <div class="col-xs-12">
+                        <button class="btn btn-info btn-block btn-rounded text-uppercase waves-effect waves-light" type="submit">Registrase</button>
+                    </div>
+                </div>
+                <div class="form-group m-b-0">
+                    <div class="col-sm-12 text-center">
+                        <p>¿Ya tienes una cuenta? <a routerLink="/login" class="text-info m-l-5"><b>Ingresar</b></a></p>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</section>
+<!-- ============================================================== -->
+<!-- End Wrapper -->
+<!-- ============================================================== -->

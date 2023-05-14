@@ -4,12 +4,28 @@ on:
   push:
     branches:
       - main
+    paths:
+    - 'FrontEnd/webEP/**'
+    - '!FrontEnd/webEP/.vscode/**'
+    - '!FrontEnd/webEP/README.md'
   pull_request:
     types: [opened, synchronize, reopened, closed]
     branches:
       - main
+    paths:
+      - 'FrontEnd/webEP/**'
+      - '!FrontEnd/webEP/.vscode/**'
+      - '!FrontEnd/webEP/README.md'
 
 jobs:
+  avoid_reduncy:
+    runs-on: ubuntu-18.04
+    name: Cancel Pervious Redundant Build and Deploy Job
+    steps:
+      - uses: styfle/cancel-workflow-action@0.9.1
+        with:
+          access_token: ${{ github.token }}
+          
   build_and_deploy_job:
     if: github.event_name == 'push' || (github.event_name == 'pull_request' && github.event.action != 'closed')
     runs-on: ubuntu-latest
